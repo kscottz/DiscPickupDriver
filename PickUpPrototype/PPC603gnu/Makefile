@@ -31,8 +31,8 @@ else
 MODE_DIR := NonDebug
 endif
 OBJ_DIR := .
+PRJ_ROOT_DIR := C:/DiscPickupDriver/PickUpPrototype
 WS_ROOT_DIR := C:/DiscPickupDriver
-PRJ_ROOT_DIR := $(WS_ROOT_DIR)/PickUpPrototype
 
 
 
@@ -55,8 +55,6 @@ LIBS =
 IDE_INCLUDES = -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/wrn/coreip 
 
 IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
-
-IDE_DEFINES = 
 
 
 
@@ -103,7 +101,6 @@ BuiltinDefaultCode/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstrength-reduce 
 endif
 BuiltinDefaultCode/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/wrn/coreip 
 BuiltinDefaultCode/$(MODE_DIR)/% : IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
-BuiltinDefaultCode/$(MODE_DIR)/% : IDE_DEFINES = 
 BuiltinDefaultCode/$(MODE_DIR)/% : PROJECT_TYPE = DKM
 BuiltinDefaultCode/$(MODE_DIR)/% : DEFINES = 
 BuiltinDefaultCode/$(MODE_DIR)/% : EXPAND_DBG = 0
@@ -148,7 +145,6 @@ BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : DEBUGFLAGS_Assembler = -O2 -fstr
 endif
 BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : IDE_INCLUDES = -I$(WIND_BASE)/target/h/WPILib -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/wrn/coreip 
 BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : IDE_LIBRARIES = $(WIND_BASE)/target/lib/WPILib.a 
-BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : IDE_DEFINES = 
 BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : PROJECT_TYPE = DKM
 BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : DEFINES = 
 BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : EXPAND_DBG = 0
@@ -162,7 +158,7 @@ BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : LIBPATH =
 BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : LIBS = 
 BuiltinDefaultCode_partialImage/$(MODE_DIR)/% : OBJ_DIR := BuiltinDefaultCode_partialImage/$(MODE_DIR)
 
-BuiltinDefaultCode_partialImage/$(MODE_DIR)/Objects/PickUpPrototype/PickUpPrototype.o : $(PRJ_ROOT_DIR)/PickUpPrototype.cpp $(FORCE_FILE_BUILD)
+BuiltinDefaultCode_partialImage/$(MODE_DIR)/Objects/PickUpPrototype/PickUpPrototype.o : C:/DiscPickupDriver/PickUpPrototype/PickUpPrototype.cpp
 	$(TRACE_FLAG)if [ ! -d "`dirname "$@"`" ]; then mkdir -p "`dirname "$@"`"; fi;echo "building $@"; $(TOOL_PATH)ccppc $(DEBUGFLAGS_C++-Compiler) $(CC_ARCH_SPEC) -ansi -Wall  -MD -MP -mlongcall $(ADDED_C++FLAGS) $(IDE_INCLUDES) $(ADDED_INCLUDES) -DCPU=$(CPU) -DTOOL_FAMILY=$(TOOL_FAMILY) -DTOOL=$(TOOL) -D_WRS_KERNEL   $(DEFINES) -o "$@" -c "$<"
 
 
@@ -177,8 +173,6 @@ _clean :: BuiltinDefaultCode_partialImage/$(MODE_DIR)/BuiltinDefaultCode_partial
 
 BuiltinDefaultCode_partialImage/$(MODE_DIR)/BuiltinDefaultCode_partialImage_clean : 
 	$(TRACE_FLAG)if [ -d "BuiltinDefaultCode_partialImage" ]; then cd "BuiltinDefaultCode_partialImage"; rm -rf $(MODE_DIR); fi
-
-force : 
 
 DEP_FILES := BuiltinDefaultCode_partialImage/$(MODE_DIR)/Objects/PickUpPrototype/PickUpPrototype.d
 -include $(DEP_FILES)
